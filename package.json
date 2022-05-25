@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
-    "dev": "nodemon ./src/bin/www"
+    "dev": "nodemon ./src/bin/www",
+    "db": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
+    "dbTest": "sequelize db:drop --env test && sequelize db:create --env test && sequelize db:migrate --env test && sequelize db:seed:all --env test"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,7 +15,9 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "sequelize": "^6.20.0",
+    "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
     "eslint": "^8.16.0",

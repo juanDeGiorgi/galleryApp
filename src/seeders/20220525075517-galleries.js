@@ -8,8 +8,8 @@ module.exports = {
       source: 'https://github.com/juanDeGiorgi/galleryApp',
       createdAt: new Date(),
       updatedAt: new Date(),
-      user_id: 0,
-      gallery_type_id: 0,
+      user_id: 1,
+      gallery_type_id: 1,
     }], {});
   },
 
