@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -9,67 +7,61 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate =(models) =>  {
-      User.belongsto(models.Role,{foreignKey:'role_id', as : 'rol'});
+    static associate = (models) => {
+      User.belongsto(models.Role, { foreignKey: 'role_id', as: 'rol' });
       // define association here
-    }
-  };
+    };
+  }
+
   User.init({
-    id : {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull : false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull : false
+      allowNull: false,
     },
-    image:{
+    image: {
       type: DataTypes.STRING,
-      allowNull : true
+      allowNull: true,
     },
-    password:{
+    password: {
       type: DataTypes.STRING,
-      allowNull : false
+      allowNull: false,
     },
-    lastLogin:{
+    lastLogin: {
       type: DataTypes.DATE,
-      allowNull : true
+      allowNull: true,
     },
     role_id: {
       type: DataTypes.INTEGER,
-      allowNull : false,
-      references: {
-        model: 'Role',
-        key: 'id'
-      },
-      onUpdate : 'CASCADE',
-      onDelete : 'CASCADE',
-    }, 
+      allowNull: false,
+    },
     createdAt: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     updatedAt: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     deletedAt: {
       allowNull: true,
-      type: DataTypes.DATE
-    }
+      type: DataTypes.DATE,
+    },
 
   }, {
     sequelize,
     modelName: 'User',
-    timestamps : true,
-    paranoid : true,
+    timestamps: true,
+    paranoid: true,
   });
   return User;
 };
-

@@ -1,40 +1,19 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Galleries', {
+    await queryInterface.createTable('Images', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
+      name: {
         type: Sequelize.STRING,
       },
-      description: {
-        type: Sequelize.STRING,
-      },
-      author: {
-        type: Sequelize.STRING,
-      },
-      year: {
-        type: Sequelize.DATE,
-      },
-      source: {
-        type: Sequelize.STRING,
-      },
-      user_id: {
+      gallery_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'User',
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-      },
-      gallery_type_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'GalleryType',
+          model: 'galleries',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -56,6 +35,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('Galleries');
+    await queryInterface.dropTable('Images');
   },
 };

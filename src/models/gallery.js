@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate = (models) => {
       Gallery.belongsTo(models.User, { foreignKey: 'user_id', as: 'users' });
       Gallery.belongsTo(models.GalleryType, { foreignKey: 'gallery_type_id', as: 'gallery_types' });
+      Gallery.hasMany(models.Image, { as: 'images' });
     };
   }
 
